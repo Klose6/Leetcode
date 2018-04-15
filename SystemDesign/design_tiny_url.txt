@@ -1,0 +1,2 @@
+https://leetcode.com/problems/design-tinyurl/description/
+https://discuss.leetcode.com/topic/95853/a-complete-solution-for-tinyurl-leetcode-system-design
