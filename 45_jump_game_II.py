@@ -9,7 +9,6 @@ def jump(nums):
 		return 0
 	n = len(nums)
 	steps = 0
-	right = 0
 	i = 0
 	cur_max, next_max = 0, 0
 	while cur_max - i + 1 > 0:
