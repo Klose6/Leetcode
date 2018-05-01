@@ -23,7 +23,7 @@ class Solution(object):
 		return -1
 	def set(self, key, val):
 		if key in self.dic:
-			self._remove(key)
+			self._remove(self.dic.get(key))
 		n = Node(key, val)
 		self._add(n)
 		self.dic[key] = n

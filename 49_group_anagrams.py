@@ -5,7 +5,7 @@
 from collections import defaultdict
 
 
-def group_anargams(strs):
+def group_anagams(strs):
 	if not strs:
 		return
 	groups = defaultdict(list)
@@ -15,4 +15,4 @@ def group_anargams(strs):
 	return map(sorted, groups.values())
 
 
-print group_anargams(["eat", "tea", "tan", "ate", "nat", "bat"])
+print group_anagams(["eat", "tea", "tan", "ate", "nat", "bat"])
