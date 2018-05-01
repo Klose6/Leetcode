@@ -24,7 +24,18 @@ def can_jump2(nums):
 	return i == n
 
 
+def can_jump3(nums):
+	if not nums:
+		raise ValueError("invalid input")
+	goal = len(nums) - 1
+	for i in range(len(nums))[::-1]:
+		if nums[i] + i >= goal:
+			goal = i
+	return not goal
+
 print can_jump([2, 3, 1, 1, 4])  # true
 print can_jump([3, 2, 1, 0, 4])  # false
 print can_jump2([2, 3, 1, 1, 4])  # true
 print can_jump2([3, 2, 1, 0, 4])  # false
+print can_jump3([2, 3, 1, 1, 4])  # true
+print can_jump3([3, 2, 1, 0, 4])  # false
