@@ -10,10 +10,10 @@ def sort_colors(nums):
 	lo, hi = 0, n - 1
 	i = 0
 	while i <= hi:
-		while i > lo and nums[i] == 0:
+		if nums[i] == 0:
 			nums[lo], nums[i] = nums[i], nums[lo]
 			lo += 1
-		while i < hi and nums[i] == 2:
+		if nums[i] == 2:
 			nums[hi], nums[i] = nums[i], nums[hi]
 			hi -= 1
 		i += 1
