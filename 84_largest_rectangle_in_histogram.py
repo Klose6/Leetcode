@@ -5,20 +5,15 @@
 
 def largest_rectangle(heights):
 	res = 0
-	stack = []
-	n = len(heights)
-	i = 0
-	while i <= n:
-		bar = heights[i] if i < n else 0
-		if not stack or bar >= heights[stack[-1]]:
-			stack.append(i)
-			i += 1
-		else:
-			height = heights[stack.pop()]
-			while stack and height == heights[stack[-1]]:
-				stack.pop()
-			left = 0 if not stack else stack[-1] + 1
-			res = max(res, height * (i - left))
+	stack = [-1]
+	heights.append(0)
+	for i in range(len(heights)):
+		while heights[i] < heights[stack[-1]]:
+			h = heights[stack.pop()]
+			w = i - stack[-1] - 1
+			res = max(res, h * w)
+		stack.append(i)
+	heights.pop()
 	return res
 
 
