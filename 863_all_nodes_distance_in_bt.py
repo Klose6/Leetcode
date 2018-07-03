@@ -1,5 +1,6 @@
 """
 863 all node distance K in binary tree
+*each node value is unique
 """
 import collections
 
@@ -36,15 +37,15 @@ class solution(object):
 
 		def connect(parent, child):
 			if parent and child:
-				conn[parent.val].append(child)
-				conn[child.val].append(parent)
+				conn[parent.val].append(child.val)
+				conn[child.val].append(parent.val)
 			if child.left:
 				connect(child, child.left)
 			if child.right:
 				connect(child, child.right)
 
 		connect(None, root)
-		bfs = [target]
+		bfs = [target.val]
 		seen = set(bfs)
 		for i in xrange(K):
 			bfs = [y for x in bfs for y in conn[x]]
