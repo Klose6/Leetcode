@@ -17,4 +17,8 @@ class Solution(object):
 				res = min(res, i - d.popleft())
 			while d and B[i] <= B[d[-1]]:
 				d.pop()
+			d.append(i)
 		return res if res <= N else -1
+
+
+print Solution().shortestSubarray([2, -1, 2], 3)
