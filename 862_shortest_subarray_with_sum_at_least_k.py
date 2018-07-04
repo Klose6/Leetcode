@@ -9,9 +9,10 @@ class Solution(object):
 		N = len(A)
 		B = [0] * (N + 1)
 		for i in range(N): B[i + 1] = B[i] + A[i]
+		# Deque d will keep indexes of increasing B[i].
 		d = collections.deque()
 		res = N + 1
-		for i in range(N + 1):
+		for i in xrange(N + 1):
 			while d and B[i] - B[d[0]] >= K:
 				res = min(res, i - d.popleft())
 			while d and B[i] <= B[d[-1]]:
