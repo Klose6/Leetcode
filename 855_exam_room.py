@@ -1,7 +1,7 @@
 """
 855 exam room
 """
-
+import bisect
 
 class ExamRoom(object):
 	def __init__(self, N):
@@ -19,6 +19,7 @@ class ExamRoom(object):
 					d, res = (b - a) / 2, (b + a) / 2
 			if N - 1 - L[-1] > d:
 				res = N - 1
+		bisect.insort(L, res)
 		return res
 
 	def leave(self, p):
