@@ -9,7 +9,7 @@ Otherwise it will become the new slowest car, that is new lead of a car fleet.
 
 
 class Solution(object):
-	def car_fleet(self, speeds, positions, target):
+	def car_fleet(self, positions, speeds, target):
 		times = [float(target - p) / s for p, s in sorted(zip(positions, speeds))]
 		res = cur = 0
 		for time in times[::-1]:
@@ -17,3 +17,6 @@ class Solution(object):
 				res += 1
 				cur = time
 		return res
+
+
+print Solution().car_fleet([10, 8, 0, 5, 3], [2, 4, 1, 1, 3], 12)  # 3
