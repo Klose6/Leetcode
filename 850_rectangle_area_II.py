@@ -32,18 +32,18 @@ class SegmentTreeNode(object):
 	def __init__(self, start, end):
 		self.start, self.end = start, end
 		self.total = self.count = 0
-		self.left = self.right = None
+		self._left = self._right = None
 
 	def mid(self):
 		return (self.start + self.end) / 2
 
 	def left(self):
-		self.left = self.left or SegmentTreeNode(self.start, self.mid())
-		return self.left
+		self._left = self._left or SegmentTreeNode(self.start, self.mid())
+		return self._left
 
 	def right(self):
-		self.right = self.right or SegmentTreeNode(self.mid(), self.end)
-		return self.right
+		self._right = self._right or SegmentTreeNode(self.mid(), self.end)
+		return self._right
 
 	def update(self, X, i, j, val):
 		if i >= j:
