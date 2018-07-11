@@ -27,6 +27,25 @@ class Solution(object):
 		else:
 			return self.get_kth(A, astart, B, bstart+k/2, k-k/2)
 
+	def get_medians1(self, A, B):
+		def find_kth(A, B, k):
+			lenA, lenB = len(A), len(B)
+			if lenA > lenB:
+				return find_kth(B, A, k)
+			left, right = 0, lenA
+			while left < right:
+				mid = left + (right - left) / 2
+				if 0 <= k - 1 - mid < lenB and A[mid] >= B[k - 1 - mid]:
+					right = mid
+				else:
+					left = mid + 1
+			Ai_minus_1 = A[left - 1] if left - 1 >= 0 else float("-inf")
+			Bj = B[k - left - 1] if k - 1 - left >= 0 else float("-inf")
+			return max(Ai_minus_1, Bj)
+
+		m, n = len(A), len(B)
+		return (find_kth(A, B, (m + n + 1) / 2) + find_kth(A, B, (m + n + 2) / 2)) / 2.0
+
 	def get_medians2(self, A, B):
 		"""
 		1) len(left_part) == len(right_part)
@@ -66,5 +85,7 @@ class Solution(object):
 s=Solution()
 print s.get_medians([1], [1])
 print s.get_medians([1,2], [3])
+print s.get_medians1([1], [1])
+print s.get_medians1([1, 2], [3])
 print s.get_medians2([1], [1])
 print s.get_medians2([1, 2], [3])
