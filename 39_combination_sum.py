@@ -25,6 +25,7 @@ def combination_sum2(nums, target):
 	def dfs(cur_res, cur_sum):
 		if cur_sum == target:
 			res.append(cur_res)
+			return
 		for num in nums:
 			if num + cur_sum > target:
 				break
