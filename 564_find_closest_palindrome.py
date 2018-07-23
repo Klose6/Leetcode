@@ -24,7 +24,7 @@ class Solution(object):
 
 	def find_closest_palindrome1(self, s):
 		n = len(s)
-		potentials = set((str(10 ** n + 1), str(10 ** (n - 1) - 1)))
+		potentials = set((str(10 ** n - 1), str(10 ** (n - 1) + 1)))
 		prefix = int(s[:(n + 1) / 2])
 		for i in map(str, (prefix - 1, prefix, prefix + 1)):
 			potentials.add(i + [i, i[:-1]][n % 2][::-1])
