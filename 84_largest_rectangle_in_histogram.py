@@ -13,10 +13,10 @@ buildings
 
 def largest_rectangle(heights):
 	res = 0
-	stack = [-1]
-	heights.append(0)
+	stack = [-1]  # in case when the len(stack) == 1 for line 21
+	heights.append(0)  # add one more element for final check
 	for i in range(len(heights)):
-		while stack and heights[i] < heights[stack[-1]]:
+		while heights[i] < heights[stack[-1]]:
 			h = heights[stack.pop()]
 			w = i - stack[-1] - 1
 			res = max(res, h * w)
