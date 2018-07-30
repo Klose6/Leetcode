@@ -1,5 +1,6 @@
 """
 146 LRU cache
+https://leetcode.com/problems/lru-cache/discuss/45926/Python-Dict-+-Double-LinkedList
 """
 class Node(object):
 	def __init__(self, key, val):
@@ -12,7 +13,7 @@ class Solution(object):
 		self.dic = dict()
 		self.head = Node(0)
 		self.tail = Node(0)
-		self.head.next=self.tail
+		self.head.next = self.tail
 		self.tail.pre = self.head
 	def get(self, key):
 		if key in self.dic:
@@ -37,6 +38,6 @@ class Solution(object):
 	def _add(self, node):
 		p = self.tail.pre
 		p.next = node
+		self.tail.pre = node
 		node.pre = p
-		self.tail.pre = p
 		node.next = self.tail
