@@ -32,7 +32,7 @@ def merge(l1, l2):
 			l1 = l1.next
 		else:
 			cur.next = l2
-			l2.next
+			l2 = l2.next
 		cur = cur.next
 	if l1:
 		cur.next = l1
