@@ -14,16 +14,16 @@ class Trie(object):
 		cur = self.root
 		for w in word:
 			cur = cur.children[w]
-		cur.isword=True
+		cur.isword = True
 	def search(self, word):
-		cur=self.root
+		cur = self.root
 		for w in word:
 			cur = cur.children.get(w)
 			if not cur:
 				return False
 		return cur.isword
 	def startswith(self, word):
-		cur=self.root
+		cur = self.root
 		for w in word:
 			cur = cur.children.get(w)
 			if not cur:
