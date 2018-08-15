@@ -1,5 +1,6 @@
 """
 207 course schedule
+https://leetcode.com/problems/course-schedule/discuss/58509/18-22-lines-C++-BFSDFS-Solutions
 """
 
 
