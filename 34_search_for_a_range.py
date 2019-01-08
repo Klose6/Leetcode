@@ -3,7 +3,6 @@
 """
 import bisect
 
-
 def search_for_range(nums, target):
 	res = [-1, -1]
 	if not nums:
@@ -40,7 +39,44 @@ def search_for_range2(nums, target):
 	return [lo, bisect.bisect(nums, target) - 1] if target in nums[lo:lo + 1] else res
 
 
-print search_for_range([5, 7, 7, 8, 8, 10], 8)  # [3,4]
-print search_for_range([5, 7, 7, 8, 8, 10], 6)  # [-1,-1]
-print search_for_range2([5, 7, 7, 8, 8, 10], 8)  # [3,4]
-print search_for_range2([5, 7, 7, 8, 8, 10], 6)  # [-1,-1]
+def search_for_range3(nums, target):
+	if not nums:
+		return [-1, -1]
+
+	def find_left():
+		idx = -1
+		lo, hi = 0, len(nums) - 1
+		while lo <= hi:
+			mid = lo + (hi - lo) / 2
+			if nums[mid] < target:
+				lo = mid + 1
+			else:
+				hi = mid - 1
+			if nums[mid] == target:
+				idx = mid
+		return idx
+
+	def find_right():
+		idx = -1
+		lo, hi = 0, len(nums) - 1
+		while lo <= hi:
+			mid = lo + (hi - lo) / 2
+			if nums[mid] <= target:
+				lo = mid + 1
+			else:
+				hi = mid - 1
+			if nums[mid] == target:
+				idx = mid
+		return idx
+
+	return [find_left(), find_right()]
+
+
+assert search_for_range([5, 7, 7, 8, 8, 10], 8) == [3, 4]  # [3,4]
+assert search_for_range([5, 7, 7, 8, 8, 10], 6) == [-1, -1]
+
+assert search_for_range2([5, 7, 7, 8, 8, 10], 8) == [3, 4]
+assert search_for_range2([5, 7, 7, 8, 8, 10], 6) == [-1, -1]
+
+assert search_for_range3([5, 7, 7, 8, 8, 10], 8) == [3, 4]  # [3,4]
+assert search_for_range3([5, 7, 7, 8, 8, 10], 6) == [-1, -1]
