@@ -30,4 +30,20 @@ def findLargestRectangle(heights):
 	return res
 
 
+def findLargestRectangle1(heights):
+	if not heights:
+		return 0
+	stack = []
+	res = 0
+	heights.append(0)
+	for i in range(len(heights)):
+		while stack and heights[i] <= heights[stack[-1]]:
+			endIdx = stack.pop()
+			startIdx = stack[-1] if stack else -1
+			res = max(res, heights[endIdx] * (i - startIdx - 1))
+		stack.append(i)
+	return res
+
+
 assert findLargestRectangle([1, 2, 3]) == 4
+assert findLargestRectangle1([1, 2, 3]) == 4
