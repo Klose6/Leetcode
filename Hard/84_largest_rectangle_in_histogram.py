@@ -33,15 +33,16 @@ def findLargestRectangle(heights):
 def findLargestRectangle1(heights):
 	if not heights:
 		return 0
+	heights.append(0)
 	stack = []
 	res = 0
-	heights.append(0)
 	for i in range(len(heights)):
 		while stack and heights[i] <= heights[stack[-1]]:
-			endIdx = stack.pop()
-			startIdx = stack[-1] if stack else -1
-			res = max(res, heights[endIdx] * (i - startIdx - 1))
+			h = heights[stack.pop()]
+			w = i - stack[-1] - 1 if stack else i
+			res = max(res, h * w)
 		stack.append(i)
+	heights.pop()
 	return res
 
 
