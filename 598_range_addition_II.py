@@ -4,7 +4,10 @@ range addition II 598
 
 class Solution:
   def maxCount(self, m, n, ops):
-    if not ops or m <=0 or n <= 0:
+    """
+    only need to find the min value in row values and min value in column values
+    """
+    if not ops or m <= 0 or n <= 0:
       return 0
     #row = min([op[0] for op in ops])
     #col = min([op[1] for op in ops])
