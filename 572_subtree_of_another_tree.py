@@ -7,6 +7,7 @@ class Node:
   def __init__(self, val):
     self.val = val
     self.left = self.right = None
+    # self.merkle = None
 
 
 def isSubtree(t1, t2):
@@ -40,6 +41,7 @@ def isSubtree2(t1, t2):
     m_left = merkle(node.left)
     m_right = merkle(node.right)
     node.merkle = getHash(m_left + str(node.val) + m_right)
+    return node.merkle
 
   # process the tree the compute all the ubstree hashes
   merkle(t1)
