@@ -12,9 +12,9 @@ class Node:
 
 def quad_tree_intersection(q1, q2):
   if q1.isLeaf: #if q1 is leaf and it value is true, then we can directly return q1, otherwise we rely on q2
-    return q1.val if q1 else q2
+    return q1 if q1.val else q2
   elif q2.isLeaf:
-    return q2.val if q2 else q1
+    return q2 if q2.val else q1
   else:
     tLeft = quad_tree_intersection(q1.topLeft, q2.topLeft)
     tRight = quad_tree_intersection(q1.topRight, q2.topRight)
