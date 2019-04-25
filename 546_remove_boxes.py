@@ -18,12 +18,12 @@ class Solution(object):
 			for j in range(l, n):
 				i = j - l
 				for k in range(0, i + 1):
-					res = (k + 1) * (k + 1) + dp[i + 1][j][0]
-					for m in range(i + 1, j + 1):
+					res = (k + 1) * (k + 1) + dp[i + 1][j][0] # if remove ith element first
+					for m in range(i + 1, j + 1): # if attach ith element to some other box of the same color from i+1 to j
 						if boxes[m] == boxes[i]:
 							res = max(res, dp[i + 1][m - 1][0] + dp[m][j][k + 1])
 					dp[i][j][k] = res
 		return 0 if n == 0 else dp[0][n - 1][0]
 
 
-print Solution().remove_boxes([1, 3, 2, 2, 2, 3, 4, 3, 1]) == 23
+print(Solution().remove_boxes([1, 3, 2, 2, 2, 3, 4, 3, 1])) # 23
