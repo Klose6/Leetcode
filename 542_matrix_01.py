@@ -15,15 +15,15 @@ def findDistanceToOne(matrix):
   for i in range(m):
     for j in range(n):
       if matrix[i][j] == 1:
-        matrix[i][j] = maxsize
+        matrix[i][j] = maxsize # mark all the 1s since later we need to set the distances, which can be als o1
       else:
-        q.put((i,j))
+        q.put((i, j)) # store the positions of 0s in the queue for bfs
   while not q.empty():
     x, y = q.get()
-    for dir in [(-1,0), (1,0), (0,1), (0,-1)]:
-      a, b = x+dir[0], y+dir[1]
-      if 0<=a<m and 0<=b<n and matrix[a][b] == maxsize:
-        q.put((a,b))
+    for dir in [(-1, 0), (1, 0), (0, 1), (0, -1)]:
+      a, b = x + dir[0], y + dir[1]
+      if 0 <= a <m and 0 <= b <n and matrix[a][b] == maxsize:
+        q.put((a,b)) # store the positions of 1s for bfs
         matrix[a][b] = min(matrix[a][b], matrix[x][y]+1)
   return matrix
 
@@ -35,15 +35,15 @@ def findDistanceToOne_2(matrix):
     for j in range(n):
       if matrix[i][j] == 0:
         continue
-      up = matrix[i][j-1] if j>0 else maxsize
-      left = matrix[i-1][j] if i>0 else maxsize
+      up = matrix[i][j-1] if j > 0 else maxsize
+      left = matrix[i-1][j] if i > 0 else maxsize
       matrix[i][j] = min(up, left) + 1
   for i in range(m)[::-1]:
     for j in range(n)[::-1]:
       if matrix[i][j] == 0:
         continue
-      right = matrix[i][j+1] if j<n-1 else maxsize
-      down = matrix[i+1][j] if i<m-1 else maxsize
+      right = matrix[i][j+1] if j < n-1 else maxsize
+      down = matrix[i+1][j] if i < m-1 else maxsize
       matrix[i][j] = min(matrix[i][j], min(down, right)+1)
   return matrix
 
