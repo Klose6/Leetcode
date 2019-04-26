@@ -13,7 +13,7 @@ def singleElement(nums):
     if nums[mid] != nums[mid+1]: # we din't find a pair, then the target must on the left side
       r = mid
     else: # then the target must on the right side - mid + 2
-      l = mid + 2
+      l = mid + 2 # l always at the even index, which should be the single element eventually
   return nums[l]
 
 print(singleElement([1,1,2,3,3,4,4,8,8])) # 2
