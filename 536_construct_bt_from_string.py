@@ -9,6 +9,7 @@ def constructBT(s):
   paren = s.find("(")
   val = int(s) if paren == -1 else int(s[:paren])
   node = TreeNode(val)
+  if paren == -1: return node # if no parentheses found, then return
   start, count = paren, 0
   for i in range(start, len(s)):
     if s[i] == "(": count += 1
