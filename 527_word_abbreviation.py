@@ -4,7 +4,7 @@
 import collections
 
 
-class Solution(object):
+class Solution:
 	def word_abbre(self, words):
 		def is_unique(prefix, words):
 			return sum([w.startswith(prefix) for w in words]) == 1
@@ -17,10 +17,10 @@ class Solution(object):
 		word_to_abbre = {}
 		for word in words:
 			abbre_to_word[to_abbre(word[:1], word)].add(word)
-		for abbre, conflicts in abbre_to_word.iteritems():
+		for abbre, conflicts in abbre_to_word.items():
 			if len(conflicts) > 1:
 				for word in conflicts:
-					for i in range(2, len(word)):
+					for i in range(2, len(word)): # start with 2 prefix chars
 						if is_unique(word[:i], conflicts):
 							word_to_abbre[word] = to_abbre(word[:i], word)
 							break
@@ -28,5 +28,4 @@ class Solution(object):
 				word_to_abbre[conflicts.pop()] = abbre
 		return word_to_abbre.values()
 
-
-print Solution().word_abbre(["like", "god", "me", "internal", "interral"])
+print(Solution().word_abbre(["like", "god", "me", "internal", "interral"]))
