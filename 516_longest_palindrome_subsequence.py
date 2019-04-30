@@ -5,6 +5,7 @@
 def findLongestPalindrome(s):
   if not s: return 0
   n = len(s)
+  # dp[i][j]: the longest palindrome from i to j
   dp = [[0]*n for _ in range(n)]
   for i in range(n)[::-1]:
     dp[i][i] = 1
