@@ -10,7 +10,7 @@ def findBottomLeftVal(root, dep):
   global bottom_left_val, max_dep
   if not root:
     return
-  if dep > max_dep:
+  if dep > max_dep: # use the depth to find the bottom level
     bottom_left_val = root.val
     max_dep = dep
   findBottomLeftVal(root.left, dep+1)

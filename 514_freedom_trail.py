@@ -26,4 +26,4 @@ class Solution(object):
 			state = next_state
 		return min(state.values()) + len(key)
 
-print Solution().freedom_trail("godding", "gd") == 4
+print(Solution().freedom_trail("godding", "gd")) # 4
