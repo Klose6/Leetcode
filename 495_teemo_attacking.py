@@ -17,12 +17,12 @@ def totalAttackingTime(timeSeries, duration):
   return res
 
 def totalAttackingTime2(timeSeries, duration):
-  if not timeSeries or duration <=0:
+  if not timeSeries or duration <= 0:
     return 0
   res = duration * len(timeSeries)
   for i in range(1, len(timeSeries)):
     res -= max(0, duration - (timeSeries[i] - timeSeries[i-1]))
   return res
 
-print(totalAttackingTime([1,2], 2))
-print(totalAttackingTime2([1,2], 2))
+print(totalAttackingTime([1,2], 2)) # 3
+print(totalAttackingTime2([1,2], 2)) # 3
