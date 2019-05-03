@@ -9,13 +9,17 @@ from queue import PriorityQueue as pq
 from heapq import *
 
 def findMaxCapital(k, W, profits, capital):
-  cur = []
-  future = sorted(zip(capital, profits))[::-1]
+  heap = []
+  # sort the projects by their (caital, profit)
+  projects = sorted(zip(capital, profits))
+  i = 0
   for _ in range(k):
-    while future and future[-1][0] <= W:
-      heappush(cur, -future.pop()[1])
-    if cur:
-      W -= heappop(cur)
+    # store all the projects that can be processed under the current capital
+    while i < len(projects) and projects[i][0] <= W:
+      heappush(heap, -projects[i][1]) # select the most profitable one
+      i += 1
+    if heap:
+      W -= heappop(heap)
   return W
 
-print(findMaxCapital(2, 0, [1,2,3], [0,1,1]))
+print(findMaxCapital(2, 0, [1,2,3], [0,1,1])) # 4

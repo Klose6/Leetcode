@@ -5,7 +5,8 @@ https://discuss.leetcode.com/topic/77472/similar-to-the-maze-easy-understanding-
 https://discuss.leetcode.com/topic/77975/python-solution-with-explanation-dijkstra-s-algorithm/2
 """
 from sys import maxsize
-from queue import Queue, heappush, heappop
+from queue import Queue
+from heapq import heappush, heappop
 
 def getPath(start, end, maze):
   """
@@ -17,7 +18,7 @@ def getPath(start, end, maze):
   q = Queue()
   q.put(start)
   distance = [[maxsize for _ in range(n)] for _ in range(m)]
-  # dustance = [maxsize * n] * m # don't use this, the 4th columns will be all 0
+  # distance = [maxsize * n] * m # don't usie this, the 4th columns will be all 0
   distance[start[0]][start[1]] = 0
   # distance[0][4] = 0
   # print(distance)
@@ -33,6 +34,7 @@ def getPath(start, end, maze):
         y += dir[1]
         count += 1
       if distance[cur[0]][cur[1]] + count < distance[x][y]:
+        # only add the elements with shorter distances(non-visited elements)
         distance[x][y] = distance[cur[0]][cur[1]] + count
         q.put((x, y))
         # print("put({}, {})".format(x, y))
