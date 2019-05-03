@@ -1,3 +1,6 @@
+"""
+495 teemo attacking
+"""
 #https://discuss.leetcode.com/topic/77360/python-solution-for-teemo
 def totalAttackingTime(timeSeries, duration):
   if not timeSeries or duration <= 0:

@@ -1,3 +1,6 @@
+"""
+496 next greater number
+"""
 #https://discuss.leetcode.com/topic/78879/python-solution-with-o-n
 def getNextGreaterElement(findNums, nums):
     if not findNums or not nums:
