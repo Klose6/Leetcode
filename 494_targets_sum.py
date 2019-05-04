@@ -1,18 +1,40 @@
+"""
+494 target sum
+"""
 #https://leetcode.com/problems/target-sum/#/solutions
 #https://discuss.leetcode.com/topic/76205/python-dp
-def findTargetSumWays(num, s):
+"""
+find a subset of the nums that need to be positive and the left to be negative so that the sum is the target
+sum(P) - sum(N) = target
+sum(P) - sum(N) + sum(P) + sum(N) = target + sum(P) + sum(N)
+2 * sum(P) = target + sum(P) + sum(N)
+"""
+
+def findTargetSum(num, s):
   if not num:
     return -1
   sm = sum(num)
   if sm < s or (sm+s) % 2:
       return 0
   s += sm
-  s = (int)(s/2)
-  dp = [0]*(s+1)
+  s = s // 2
+  dp = [0] * (s+1)
   dp[0] = 1
   for i in num:
       for j in range(i, s+1)[::-1]:
           dp[j] += dp[j-i]
   return dp[s]
 
-print(findTargetSumWays([1,1,1,1,1], 3))
+def findTargetSum2(nums, S):
+  count = {0: 1}
+  for n in nums:
+    count2 = {}
+    for tmp in count: # find the frequency of all the sums when uses a new number
+      count2[tmp + n] = count2.get(tmp + n, 0) + count[tmp]
+      count2[tmp - n] = count2.get(tmp - n, 0) + count[tmp]
+    count = count2
+  return count.get(S, 0)
+
+# testing
+print(findTargetSum([1,1,1,1,1], 3))
+print(findTargetSum2([1,1,1,1,1], 3))
