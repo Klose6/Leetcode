@@ -21,8 +21,9 @@ def findTargetSum(num, s):
   dp = [0] * (s+1)
   dp[0] = 1
   for i in num:
-      for j in range(i, s+1)[::-1]:
+      for j in range(i, s+1)[::-1]:# we need the old states of i and i-1, so need to do it reversely
           dp[j] += dp[j-i]
+      # print(f"dp: {dp}")
   return dp[s]
 
 def findTargetSum2(nums, S):
@@ -33,6 +34,7 @@ def findTargetSum2(nums, S):
       count2[tmp + n] = count2.get(tmp + n, 0) + count[tmp]
       count2[tmp - n] = count2.get(tmp - n, 0) + count[tmp]
     count = count2
+  print(f"count len: {count}")
   return count.get(S, 0)
 
 # testing
