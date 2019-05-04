@@ -36,5 +36,5 @@ def findTargetSum2(nums, S):
   return count.get(S, 0)
 
 # testing
-print(findTargetSum([1,1,1,1,1], 3))
-print(findTargetSum2([1,1,1,1,1], 3))
+print(findTargetSum([1,1,1,1,1], 3)) # 5
+print(findTargetSum2([1,1,1,1,1], 3)) # 5
