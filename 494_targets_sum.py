@@ -26,7 +26,7 @@ def findTargetSum(num, s):
       # print(f"dp: {dp}")
   return dp[s]
 
-def findTargetSum2(nums, S):
+def findTargetSum2(nums, S): # relatively easier to understand
   count = {0: 1}
   for n in nums:
     count2 = {}
