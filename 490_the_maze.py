@@ -14,13 +14,13 @@ def hasPath(matrix, start, dest):
     # print(f"cur: {cur}")
     if cur == tuple(dest): return True
     for d in ((-1, 0), (1, 0), (0, -1), (0, 1)):
-      x = cur[0] + d[0]
-      y = cur[1] + d[1]
-      while 0<=x<m and 0<=y<n and matrix[x][y] == "0": # keep going until meet a wall
+      x = cur[0] #+ d[0]
+      y = cur[1] #+ d[1]
+      while 0<=x+d[0]<m and 0<=y+d[1]<n and matrix[x+d[0]][y+d[1]] == "0": # keep going until meet a wall
         x += d[0]
         y += d[1]
-      x -= d[0] # roll back the valid position
-      y -= d[1]
+      # x -= d[0] # roll back the valid position
+      # y -= d[1]
       if (x, y) not in visited:
         visited.add((x, y))
         q.put((x, y))
