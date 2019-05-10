@@ -3,6 +3,7 @@
 https://leetcode.com/problems/sliding-window-median/discuss/96337/Python-SortedArray-(beats-100)-and-2-Heap(beats-90)-solution
 """
 from bisect import *
+from heapq import heappush, heappop
 
 class Solution(object):
 	def sliding_window_medians(self, nums, k):
@@ -18,9 +19,16 @@ class Solution(object):
 			# print i, v
 		medians.append((win[k//2]+win[k//2+1])/2.0 if not odd else win[k//2]/1.0)
 		return medians
+
 	def sliding_window_medians2(self, nums, k):
-		if not nums or len(nums)<k:
+		if not nums or len(nums) < k:
 			return
+		lh, rh = [], []
+		res = []
+		for i in range(k):
+			heappush(lh, i)
+		for i in range(k):
+
 
 s=Solution()
 print(s.sliding_window_medians([1,3,-1,-3], 3)) #[1,-1]
