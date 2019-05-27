@@ -9,6 +9,7 @@ def canWin(maxChoosableInteger, desiredTotal):
   if desiredTotal <= 0:
     return True
   used = [0] * (maxChoosableInteger + 1)
+  used[0] = 1
   return dfs(used, desiredTotal)
 
 cache = {}
@@ -29,3 +30,4 @@ def dfs(used, desiredTotal):
   return False
 
 print(canWin(10, 11)) # False
+print(canWin(10, 40)) # False
