@@ -8,7 +8,7 @@ class Solution(object):
 		if not buckets or minuteToDie <= 0 or minuteToTest <=0:
 			return 0
 		pigs = 0
-		while ( minuteToTest // minuteToDie + 1) ** pigs <= buckets:
+		while ( minuteToTest // minuteToDie + 1) ** pigs < buckets:
 			pigs += 1
 		return pigs
 
