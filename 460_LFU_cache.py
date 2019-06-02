@@ -46,10 +46,11 @@ class LFUCache:
 		self.min_freq = 0
 
 	def _update(self, node):
-		# helper function
+		# helper function ro remove the old node and add it to the new freq list
 		freq = node.freq
 		self.freq[freq].pop(node)
 		if self.min_freq == freq and not self.freq:
+			# if the removed node is the only node in the freq list, need to update the min_freq
 			self.min_freq += 1
 		node.freq += 1
 		freq = node.freq
