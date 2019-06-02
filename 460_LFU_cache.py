@@ -72,7 +72,7 @@ class LFUCache:
 			node.val = value
 		else:
 			if self.size == self.capacity:
-				node = self.freq[self.min_freq]
+				node = self.freq[self.min_freq].pop()
 				del self.node[node.key]
 				self.size -= 1
 			node = Node(key, value)
