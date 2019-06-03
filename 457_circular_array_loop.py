@@ -35,5 +35,5 @@ class Solution(object):
          slow = fast
      return False
 
-print Solution().circular_array_loop([2,-1,1,2,2])
-print Solution().circular_array_loop([-1,2])
+print(Solution().circular_array_loop([2,-1,1,2,2])) # True
+print(Solution().circular_array_loop([-1,2])) # False
