@@ -26,7 +26,7 @@ class Solution(object):
            if slow == move(slow): # one item loop
              break
            return True # find a loop
-       # set all the elements along the path to 0
+       # set all the elements along the path to 0 if loop not found
        slow = i
        sgn = nums[slow]
        while sgn * nums[slow] > 0:
