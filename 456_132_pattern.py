@@ -2,14 +2,13 @@
 456 132 Pattern
 https://leetcode.com/problems/132-pattern/discuss/
 """
-import sys
 
 class Solution(object):
   def get_num_132_pattern(self, nums):
     if not nums:
       return False
     stack = []
-    s3 = -sys.maxint - 1
+    s3 = float("-inf")
     for i in range(len(nums))[::-1]:
       if nums[i] < s3:
         return True
@@ -21,5 +20,5 @@ class Solution(object):
     return False
 
 s = Solution()
-print s.get_num_132_pattern([9,11,8,9,10,7,9])
-print s.get_num_132_pattern([1,2,3])
+print(s.get_num_132_pattern([3,1,4,2])) # True
+print(s.get_num_132_pattern([1,2,3])) # False
