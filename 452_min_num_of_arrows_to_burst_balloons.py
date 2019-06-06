@@ -17,7 +17,7 @@ class Solution:
     res = 0
     # print dup
     for i in dup:
-      if i[0] > end:
+      if i[0] > end: # merge the slot(s) that overlaps with the current one
         res += 1
         end = i[1]
     return res
