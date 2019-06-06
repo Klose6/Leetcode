@@ -7,7 +7,7 @@ class Solution(object):
   def get_num_132_pattern(self, nums):
     if not nums:
       return False
-    stack = []
+    stack = [] # save the current ith element and the element smaller of it to stack as "32" pattern
     s3 = float("-inf")
     for i in range(len(nums))[::-1]:
       if nums[i] < s3:
