@@ -22,4 +22,4 @@ class Solution:
         end = i[1]
     return res
 
-print Solution().min_num([[10,16],[2,8],[1,6],[7,12]]) #2
+print(Solution().min_num([[10,16],[2,8],[1,6],[7,12]])) #2
