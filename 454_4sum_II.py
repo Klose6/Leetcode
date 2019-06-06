@@ -12,4 +12,4 @@ class Solution(object):
     AB = Counter([a+b for a in A for b in B])
     return sum(AB[-c-d] for c in C for d in D)
 
-print Solution().four_sum_count([1,2],[-2,-1],[-1,2],[0,2])
+print(Solution().four_sum_count([1,2],[-2,-1],[-1,2],[0,2]))
