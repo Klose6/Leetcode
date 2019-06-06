@@ -12,4 +12,4 @@ class Solution(object):
       return 0
     return sum(nums)-len(nums)*min(nums)
 
-print Solution().min_moves([1,2,3])
+print(Solution().min_moves([1,2,3])) # 3
