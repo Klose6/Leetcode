@@ -24,4 +24,4 @@ class Solution(object):
       j += 1
     return i
 
-print Solution().assign_cookies([1,2,3], [1,1])
+print(Solution().assign_cookies([1,2,3], [1,1]))
