@@ -1,7 +1,7 @@
 """
 Delete node in a BST
 https://leetcode.com/problems/delete-node-in-a-bst/discuss/
-
+https://leetcode.com/problems/delete-node-in-a-bst/discuss/93296/Recursive-Easy-to-Understand-Java-Solution
 """
 
 
@@ -13,7 +13,7 @@ class Node(object):
 
 class Solution(object):
   def delete_node_bst(self, root, key):
-    if not root or not key:
+    if not root:
       return
     if root.val < key:
       root.left = self.delete_node_bst(root.left, key)
@@ -24,9 +24,10 @@ class Solution(object):
         return root.right
       elif not root.right:
         return root.left
-    min_node = self.find_min(root.left)
-    root.val = min_node.val
-    root.right = self.delete_node_bst(root.right, root.val)
+      # both the left and right child exist
+      min_node = self.find_min(root.right)
+      root.val = min_node.val # assign the smallest value in the right tree to the root
+      root.right = self.delete_node_bst(root.right, root.val) # go through the smallest path to remove the min node
     return root
 
   def find_min(self, node):
