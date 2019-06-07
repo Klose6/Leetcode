@@ -26,7 +26,7 @@ class Solution(object):
         return root.left
       # both the left and right child exist
       min_node = self.find_min(root.right)
-      root.val = min_node.val # assign the smallest value in the right tree to the root
+      root.val = min_node.val # assign the min value in the right tree to the root
       root.right = self.delete_node_bst(root.right, root.val) # go through the smallest path to remove the min node
     return root
 
