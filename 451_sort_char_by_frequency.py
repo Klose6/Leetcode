@@ -5,6 +5,8 @@ https://discuss.leetcode.com/topic/66024/java-o-n-bucket-sort-solution-o-nlogn-p
 
 """
 from collections import Counter
+from heapq import heappush, heappop
+
 class Solution:
   def __init__(self):
     pass
@@ -17,7 +19,7 @@ class Solution:
     l = len(chars)
     # bucket sort
     bucket = [[] for _ in range(l)]
-    for key, val in freq.iteritems():
+    for key, val in freq.items():
       bucket[val].append(key)
     res = []
     # print bucket
@@ -26,6 +28,18 @@ class Solution:
         res.append("".join([i * j for j in bucket[i]]))
     return "".join(res)
 
+  def frequency_sort1(self, chars):
+    if not chars: return ""
+    count = Counter(chars)
+    hq = [(c, v) for v, c in count.items()]
+    # using a heapq to get the most frequent elements each time
+    res = []
+    for _ in range(len(hq)):
+      c,v = heappop(hq)
+      res.append(c*v)
+    return "".join(res)
+
 a = "AAzsz"
-print Solution().frequency_sort(a)
+print(Solution().frequency_sort(a))
+print(Solution().frequency_sort1(a))
 
