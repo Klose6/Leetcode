@@ -11,6 +11,5 @@ def findAllDuplicates(nums):
   for i, v in enumerate(nums):
     if nums[abs(v) - 1] < 0:
       res.append(abs(v))
-    else:
-      nums[abs(v) - 1] = -nums[abs(v) - 1]
+    nums[abs(v) - 1] = -nums[abs(v) - 1]
   return res
