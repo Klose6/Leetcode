@@ -9,7 +9,7 @@ def findKthNumber(n, k):
   while  k>0:
     count = 0
     cur, next = res, res + 1
-    while cur <= n: # find all the childeren nodes for cur, 1->10->100
+    while cur <= n: # find all the children nodes for cur, 1->10->100
       count += min(n+1, next) - cur
       cur *= 10
       next *= 10
