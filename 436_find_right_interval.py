@@ -9,7 +9,7 @@ def findRightInterval(intervals):
   tmp = sorted([(v[0], i) for i, v in enumerate(intervals)])
   res = []
   for i, v in enumerate(intervals):
-    idx = bisect_left(tmp, (v[1], ))
+    idx = bisect_left(tmp, (v[1], )) # find the start points bigger than the current end(not two same start points)
     res.append(tmp[idx][1] if idx<len(tmp) else -1)
   return res
 
