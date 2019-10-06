@@ -45,6 +45,6 @@ def remove_invalid_parentheses(s):
       return level
 
 input = "(a)())()"
-print remove_invalid_parentheses(input)
+print(remove_invalid_parentheses(input))
 
 
