@@ -14,3 +14,7 @@ class Solution:
                 res.append(i)
                 c[i] -= 1
         return res
+
+    def intersect1(self, nums1, nums2):
+        if not nums1 or not nums2: return []
+        return list((Counter(nums1) & Counter(nums2)).elements())
