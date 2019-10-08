@@ -18,5 +18,20 @@ def checkSubarraySum(nums ,k):
       mods[prefix_sum] = i
   return False
 
+  class Solution:
+    def checkSubarraySum(self, nums, k):
+      if not nums: return False
+      m = [0]
+      s = 0
+      for n in nums:
+        s += n
+        if k: s %= k
+        m.append(s)
+      seen = set()
+      for i in range(len(m) - 3, -1, -1):
+        seen.add(m[i + 2])
+        if m[i] in seen: return True
+      return False
+
 print(checkSubarraySum([23,2,4,6,7], 6)) # True
 print(checkSubarraySum([23,2,6,4,7], 6)) # True
